@@ -4,9 +4,13 @@ import Link from "next/link";
 import css from "./NoteList.module.css";
 import type { Note } from "@/types/note";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { deleteNote } from "@/lib/api/notes";
+import { deleteNote } from "@/lib/api";
 
-export default function NoteList({ notes }: { notes: Note[] }) {
+interface NoteListProps {
+  notes: Note[];
+}
+
+export default function NoteList({ notes }: NoteListProps) {
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
@@ -46,5 +50,6 @@ export default function NoteList({ notes }: { notes: Note[] }) {
     </ul>
   );
 }
+
 
 
